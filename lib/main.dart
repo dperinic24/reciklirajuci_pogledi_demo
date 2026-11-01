@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 }
+class Produkt{
+  final String naziv;
+  final int cijena;
+ 
+
+  Produkt(this.naziv, this.cijena);
+}
 
 class HomePage extends StatefulWidget { //daje dinamičnost stranici 
   const HomePage({super.key});
@@ -14,20 +21,12 @@ class HomePage extends StatefulWidget { //daje dinamičnost stranici
 
 class _HomePageState extends State<HomePage> {
   String odabraniPrikaz = 'lista';
-       final List<String> proizvodi = [ //tu se dodaju stvari da se prikazu preko listview
-  'Laptop',
-  'Mobitel',
-  'Tablet',
-  'Monitor',
-];
-
-final List<int> cijene = [ //i tu
-  800,
-  500,
-  300,
-  200,
-];
-
+       final List<Produkt> proizvodi = [  
+        Produkt('Laptop', 800),  
+        Produkt('Mobitel', 500),
+        Produkt('Tablet', 300),
+        Produkt('Monitor', 200),
+      ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,9 +68,13 @@ final List<int> cijene = [ //i tu
               ),
              itemBuilder: (context, index){
                 return Card(
-                  child:Center(
-                    child:Text(proizvodi[index])
-                  ),
+                  child:Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+                    Text(proizvodi[index].naziv),
+                    Text('${proizvodi[index].cijena} kn'),
+                  ],
+                 ),
                 );
               },
             ),
@@ -80,8 +83,8 @@ final List<int> cijene = [ //i tu
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Icon(Icons.shopping_cart),
-                  title: Text(proizvodi[index]),
-                  subtitle: Text('Cijena: ${cijene[index]} kn'),
+                  title: Text(proizvodi[index].naziv),
+                  subtitle: Text('Cijena: ${proizvodi[index].cijena} kn'),
                 );
               },
           ),
@@ -94,8 +97,8 @@ final List<int> cijene = [ //i tu
               ],
               rows: List.generate(proizvodi.length, (index){
                 return DataRow(cells: [
-                DataCell(Text(proizvodi[index])),
-                DataCell(Text('Cijena: ${cijene[index]} kn')),
+                DataCell(Text(proizvodi[index].naziv)),
+                DataCell(Text('${proizvodi[index].cijena} kn')),
                 ],
                );
               }),
