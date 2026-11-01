@@ -26,6 +26,16 @@ class _HomePageState extends State<HomePage> {
         Produkt('Mobitel', 500),
         Produkt('Tablet', 300),
         Produkt('Monitor', 200),
+        Produkt('Tipkovnica', 80),
+        Produkt('Miš', 40),
+        Produkt('Slušalice', 120),
+        Produkt('Televizor', 900),
+        Produkt('Printer', 340),
+        Produkt('Zvučnik', 250),
+        Produkt('Gaming konzola', 1000),
+        Produkt('Earbuds', 110),
+        Produkt('Satelit', 600),
+        Produkt('Novčanik', 90),
       ];
   @override
   Widget build(BuildContext context) {
